@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Educattio</string>
+    <string name="url" translatable="false">http://%1$s</string>
+    <string name="respuesta">Respuesta</string>
+    <string name="no_contestada">No contestada</string>
+    <string name="anterior">Anterior</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="developer">Javier Murillo, Andrea González, Omar Villanueva</string>
+    <string name="developer_subtitle">Alumnos de UABCS</string>
+    <string name="about">Acerca de</string>
+    <string name="correcto">¡Correcto!</string>
+    <string name="incorrecto">Incorrecto, la respuesta era: %1$d</string>
+    <string name="ayuda">Ayuda en línea</string>
+</resources>

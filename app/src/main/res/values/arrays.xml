@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="operations">
+        <item>Suma/resta</item>
+        <item>Multiplicación/división</item>
+    </array>
+</resources>

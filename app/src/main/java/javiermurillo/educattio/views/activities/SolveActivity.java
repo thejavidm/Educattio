@@ -59,6 +59,17 @@ public class SolveActivity extends AppCompatActivity {
 
     private void initComponents() {
         binding.btnBack.setOnClickListener(v -> {
+            Problem problem = problemList.get(problemIndex);
+            if (!binding.answer.getText().toString().isEmpty() && !problem.isAnswered()) {
+                problem.setAnswered(true);
+                problem.setAnswer(Integer.parseInt(binding.answer.getText().toString()));
+                problem.setCorrect(problem.getAnswer() == problem.getResult());
+                if (problem.isCorrect()) {
+                    Toast.makeText(this, "El problema se respondió correctamente", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "El problema se respondió incorrectamente", Toast.LENGTH_LONG).show();
+                }
+            }
             problemIndex--;
             if (problemIndex > 0) {
                 binding.btnBack.setEnabled(true);
@@ -68,6 +79,17 @@ public class SolveActivity extends AppCompatActivity {
             updateLayout();
         });
         binding.btnForward.setOnClickListener(v -> {
+            Problem problem = problemList.get(problemIndex);
+            if (!binding.answer.getText().toString().isEmpty() && !problem.isAnswered()) {
+                problem.setAnswered(true);
+                problem.setAnswer(Integer.parseInt(binding.answer.getText().toString()));
+                problem.setCorrect(problem.getAnswer() == problem.getResult());
+                if (problem.isCorrect()) {
+                    Toast.makeText(this, "El problema se respondió correctamente", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "El problema se respondió incorrectamente", Toast.LENGTH_LONG).show();
+                }
+            }
             if (problemIndex == problemsQuantity - 1) {
                 finishTest();
             } else {
@@ -80,14 +102,14 @@ public class SolveActivity extends AppCompatActivity {
             }
         });
         binding.fab.setOnClickListener(v -> {
-            if(!binding.answer.getText().toString().isEmpty()) {
+            if (!binding.answer.getText().toString().isEmpty()) {
                 Problem problem = problemList.get(problemIndex);
                 problem.setAnswered(true);
                 problem.setAnswer(Integer.parseInt(binding.answer.getText().toString()));
                 problem.setCorrect(problem.getAnswer() == problem.getResult());
                 updateLayout();
-            }else{
-                Toast.makeText(this,"Contesta lo que se te pide antes de verificar tu respuesta",Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Contesta lo que se te pide antes de verificar tu respuesta", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -156,6 +178,8 @@ public class SolveActivity extends AppCompatActivity {
         setTitle("Problema " + (problemIndex + 1) + " de " + problemsQuantity);
         Problem problem = problemList.get(problemIndex);
         binding.problem.setText(problem.getStatement());
+        binding.hint.setText(problem.getHint());
+        binding.image.setImageResource(problem.getImageId());
         if (problem.isAnswered()) {
             binding.answer.setText(String.valueOf(problem.getAnswer()));
             binding.answer.setEnabled(false);
